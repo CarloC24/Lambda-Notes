@@ -1,0 +1,19 @@
+.App {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 10px auto;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  .notes-main {
+    width: 30%;
+  }
+
+  .notes-side {
+    width: 70%;
+    background: whitesmoke;
+  }
+}

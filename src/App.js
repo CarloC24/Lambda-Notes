@@ -1,28 +1,37 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Route } from 'react-router-dom';
+import NotesMain from './components/NotesFunctions/Notes-Main';
+import './CSS/index.scss';
+import listview from './components/CRUD/Read/list-view';
+import { connect } from 'react-redux';
+import { show_notes } from './actions';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+const App = props => {
+  useEffect(() => {
+    props.show_notes();
+  }, []);
+  return (
+    <div className="App">
+      <div className="notes-main">
+        <Route path="/" component={NotesMain} />
       </div>
-    );
-  }
-}
+      <div className="notes-side">
+        <h1>Notes go here</h1>
+        <Route exact path="/" component={listview} />
+      </div>
+    </div>
+  );
+};
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    show_notes: () => dispatch(show_notes())
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
