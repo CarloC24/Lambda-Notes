@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../../CSS/index.scss';
 import { Link } from 'react-router-dom';
+import { singleNote } from '../../../actions';
 
 const listView = props => {
-  console.log(props);
   return (
     <div className="list-container">
       <h1 className="list-heading">A cool note taking app by {props.name}</h1>
       <div className="list-notes">
         {props.notes.map(item => {
           return (
-            <div className="notes" key={item._id}>
+            <div
+              className="notes"
+              key={item._id}
+              onClick={() => props.singleNote(item)}
+            >
               <Link to={`/${item._id}`}>
                 <h1 className="notes-heading">{item.title}</h1>
                 <p className="notes-paragraph"> {item.textBody}</p>
@@ -36,7 +40,11 @@ const mapStateToProps = state => ({
   name: state.notesReducer.name
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => {
+  return {
+    singleNote: note => dispatch(singleNote(note))
+  };
+};
 
 export default connect(
   mapStateToProps,

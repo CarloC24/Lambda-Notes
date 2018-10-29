@@ -1,0 +1,40 @@
+.edit-form {
+  .edit-form-heading {
+    font-size: 30px;
+    font-family: 'Roboto';
+    text-align: left;
+    margin: 50px 10px;
+  }
+  .edit-form-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    input {
+      margin: 20px 10px;
+      border-radius: 3px;
+    }
+
+    input[name='title'] {
+      width: 40%;
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    input[name='textBody'] {
+      width: 90%;
+      padding: 10px 10px 200px 0px;
+      font-size: 20px;
+    }
+
+    button {
+      background: lightblue;
+      color: white;
+      border: 1px black;
+      width: 30%;
+      font-size: 20px;
+      margin: 20px 10px;
+      padding: 15px;
+    }
+  }
+}
