@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import NotesMain from './components/NotesFunctions/Notes-Main';
+import newNote from './components/CRUD/Create/create-note';
 import './CSS/index.scss';
-import listview from './components/CRUD/Read/list-view';
+import listView from './components/CRUD/Read/list-view';
 import { connect } from 'react-redux';
 import { show_notes } from './actions';
 
@@ -19,7 +21,11 @@ const App = props => {
       </div>
       <div className="notes-side">
         <h1>Notes go here</h1>
-        <Route exact path="/" component={listview} />
+        <Switch>
+          <Route exact path="/" component={listView} />
+          <Route exact path="/new" component={newNote} />
+          <Route component={NotesMain} />
+        </Switch>
       </div>
     </div>
   );
@@ -31,7 +37,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(App);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(App)
+);

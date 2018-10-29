@@ -6,5 +6,6 @@ export const show_notes = () => dispatch => {
   console.log('reached shownotes');
   axios
     .get('https://killer-notes.herokuapp.com/')
-    .then(res => console.log(res, 'reached the notes'));
+    .then(res => dispatch({ type: SHOW_NOTES, payload: res.data }))
+    .catch(err => alert(err));
 };
