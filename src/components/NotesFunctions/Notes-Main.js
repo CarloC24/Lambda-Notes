@@ -7,10 +7,10 @@ const Notes = () => {
     <div className="notes-functions">
       <h1>Lambda Notes</h1>
       <Link to="/">
-        <div class="list-view">View Your Notes</div>
+        <div className="list-view">View Your Notes</div>
       </Link>
       <Link to="/new">
-        <div class="add-notes">+ Create New Notes</div>
+        <div className="add-notes">+ Create New Notes</div>
       </Link>
     </div>
   );

@@ -9,6 +9,7 @@ import './CSS/index.scss';
 import listView from './components/CRUD/Read/list-view';
 import { connect } from 'react-redux';
 import { show_notes } from './actions';
+import singleNote from './components/CRUD/Update/singleNote';
 
 const App = props => {
   useEffect(() => {
@@ -20,11 +21,10 @@ const App = props => {
         <Route path="/" component={NotesMain} />
       </div>
       <div className="notes-side">
-        <h1>Notes go here</h1>
         <Switch>
           <Route exact path="/" component={listView} />
           <Route exact path="/new" component={newNote} />
-          <Route component={NotesMain} />
+          <Route path="/:id" component={singleNote} />
         </Switch>
       </div>
     </div>
