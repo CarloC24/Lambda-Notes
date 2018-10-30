@@ -23,13 +23,6 @@ const listView = props => {
             </div>
           );
         })}
-
-        <div className="notes">
-          <h1 className="notes-heading">Heading</h1>
-          <p className="notes-paragraph">
-            The pig is hungry with some bacon on the side
-          </p>
-        </div>
       </div>
     </div>
   );

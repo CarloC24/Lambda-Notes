@@ -1,11 +1,12 @@
 .notes-functions {
   background: gray;
-  height: 1000px;
+  height: 1040px;
 
   h1 {
     font-family: 'Roboto';
-    font-size: 45px;
+    font-size: 40px;
     padding: 70px 0;
+    font-weight: bold;
   }
 
   div {
@@ -17,14 +18,14 @@
     background: lightblue;
     font-size: 30px;
     width: 70%;
-    padding: 30px;
+    padding: 20px;
   }
 
   .add-notes {
     color: white;
     background: lightblue;
-    font-size: 30px;
+    font-size: 25px;
     width: 70%;
-    padding: 30px;
+    padding: 20px;
   }
 }

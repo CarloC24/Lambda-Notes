@@ -32,6 +32,7 @@ const editNote = props => {
           name="title"
           onChange={e => handleChange(e)}
           value={editedNote.title}
+          placeholder="add a new note"
         />
         <input
           type="text"

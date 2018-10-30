@@ -1,24 +1,41 @@
 .new {
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
-  font-family: Roboto;
+  .new-heading {
+    font-size: 30px;
+    font-family: 'Roboto';
+    text-align: left;
+    margin: 50px 40px;
+  }
+  .new-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 
-  .new-container {
-    margin: 30px 0;
-
+    input {
+      margin: 20px 40px;
+    }
     .new-title {
       padding: 5px;
-      width: 80%;
+      font-size: 20px;
+      width: 30%;
       border-radius: 2px;
     }
-    label {
-      margin-right: 5px;
-    }
+
     .new-body {
-      padding: 0px 0px 90px 0px;
-      width: 80%;
-      border-radius: 2px;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      width: 90%;
+      padding: 10px 10px 200px 0px;
+      font-size: 20px;
+    }
+
+    button {
+      background: lightblue;
+      color: white;
+      border: 1px black;
+      width: 25%;
+      font-size: 20px;
+      margin: 20px 40px;
+      padding: 15px 20px;
     }
   }
 }

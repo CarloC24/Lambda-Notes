@@ -21,32 +21,29 @@ const newNote = props => {
     e.preventDefault();
     if (newNotes.title.length > 0 && newNotes.textBody.length > 0) {
       props.add_notes(newNotes);
+      props.history.push('/');
     } else {
       alert('Cant have a empty field');
     }
   };
   return (
-    <div>
-      <form className="new" onSubmit={e => update(e)}>
+    <div className="new">
+      <form className="new-form" onSubmit={e => update(e)}>
         <h1 className="new-heading">Create a new note</h1>
-        <div className="new-container">
-          <label>Title:</label>
-          <input
-            type="text"
-            className="new-title"
-            onChange={e => handleChange(e)}
-            name="title"
-          />
-        </div>
-        <div className="new-container">
-          <label className="label-body">Body:</label>
-          <input
-            type="text"
-            className="new-body"
-            onChange={e => handleChange(e)}
-            name="textBody"
-          />
-        </div>
+        <input
+          type="text"
+          className="new-title"
+          onChange={e => handleChange(e)}
+          name="title"
+          placeholder="create a new note"
+        />
+        <input
+          type="text"
+          className="new-body"
+          onChange={e => handleChange(e)}
+          name="textBody"
+          placeholder="create a new note"
+        />
         <button type="submit" onSubmit={e => update(e)}>
           Add new note{' '}
         </button>
