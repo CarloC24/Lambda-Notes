@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import '../../../CSS/index.scss';
 import { Link } from 'react-router-dom';
@@ -29,7 +29,6 @@ const listView = props => {
 };
 
 const mapStateToProps = state => ({
-  notes: state.notesReducer.notes,
   name: state.notesReducer.name
 });
 

@@ -1,13 +1,14 @@
 import {
   SHOW_NOTES,
-  ADD_NOTES,
   UPDATE_NOTES,
   DELETED_NOTES,
-  ADD_NOTES_RELOAD
+  FILTERED_NOTES,
+  CLEAR_FILTERED_NOTES
 } from '../actions';
 const initialState = {
   notes: [],
-  name: 'Carlo'
+  name: 'Carlo',
+  filtered: []
 };
 
 export default (state = initialState, action) => {
@@ -29,7 +30,16 @@ export default (state = initialState, action) => {
         ...state,
         notes: action.payload
       };
-
+    case FILTERED_NOTES:
+      return {
+        ...state,
+        filtered: action.payload
+      };
+    case CLEAR_FILTERED_NOTES:
+      return {
+        ...state,
+        filtered: []
+      };
     default:
       return state;
   }

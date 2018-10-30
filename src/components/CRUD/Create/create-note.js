@@ -52,7 +52,6 @@ const newNote = props => {
   );
 };
 
-const mapStateToProps = state => {};
 const mapDispatchToProps = dispatch => {
   return {
     add_notes: note => dispatch(add_notes(note))

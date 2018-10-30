@@ -19,7 +19,6 @@ const editNote = props => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
     props.updateSingleNote(editedNote.id, editedNote);
     props.history.push('/');
   };

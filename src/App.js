@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import NotesMain from './components/NotesFunctions/Notes-Main';
 import newNote from './components/CRUD/Create/create-note';
 import './CSS/index.scss';
-import listView from './components/CRUD/Read/list-view';
+import ListView from './components/CRUD/Read/list-view';
 import { connect } from 'react-redux';
 import { show_notes } from './actions';
 import singleNote from './components/CRUD/Update/singleNote';
 
-const App = props => {
+const App = theprops => {
   useEffect(() => {
-    props.show_notes();
+    theprops.show_notes();
   }, []);
   return (
     <div className="App">
@@ -22,7 +21,20 @@ const App = props => {
       </div>
       <div className="notes-side">
         <Switch>
-          <Route exact path="/" component={listView} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <ListView
+                {...props}
+                notes={
+                  theprops.filteredNotes.length > 0
+                    ? theprops.filteredNotes
+                    : theprops.notes
+                }
+              />
+            )}
+          />
           <Route exact path="/new" component={newNote} />
           <Route path="/:id" component={singleNote} />
         </Switch>
@@ -30,7 +42,12 @@ const App = props => {
     </div>
   );
 };
-
+const mapStateToProps = state => {
+  return {
+    filteredNotes: state.notesReducer.filtered,
+    notes: state.notesReducer.notes
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
     show_notes: () => dispatch(show_notes())
@@ -39,7 +56,7 @@ const mapDispatchToProps = dispatch => {
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(App)
 );

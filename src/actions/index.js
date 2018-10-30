@@ -5,6 +5,8 @@ export const ADD_NOTES = 'ADD_NOTES';
 export const SINGLE_NOTE = 'SINGLE_NOTE';
 export const UPDATE_NOTES = 'UPDATE_NOTES';
 export const DELETED_NOTES = 'DELETED_NOTES';
+export const FILTERED_NOTES = 'FILTERED_NOTES';
+export const CLEAR_FILTERED_NOTES = 'CLEAR_FILTERED_NOTES';
 
 export const show_notes = () => dispatch => {
   axios
@@ -49,4 +51,17 @@ export const deleteSingleNote = id => dispatch => {
         .catch(err => alert(err));
     })
     .catch(err => alert(err));
+};
+
+export const filtered_notes = notes => {
+  return {
+    type: FILTERED_NOTES,
+    payload: notes
+  };
+};
+
+export const clear_filtered_notes = () => {
+  return {
+    type: CLEAR_FILTERED_NOTES
+  };
 };
