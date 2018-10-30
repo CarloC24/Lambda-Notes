@@ -21,7 +21,6 @@ const newNote = props => {
     e.preventDefault();
     if (newNotes.title.length > 0 && newNotes.textBody.length > 0) {
       props.add_notes(newNotes);
-      props.history.push('/');
     } else {
       alert('Cant have a empty field');
     }

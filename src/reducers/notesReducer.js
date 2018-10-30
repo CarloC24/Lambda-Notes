@@ -1,4 +1,10 @@
-import { SHOW_NOTES, ADD_NOTES, UPDATE_NOTES, DELETED_NOTES } from '../actions';
+import {
+  SHOW_NOTES,
+  ADD_NOTES,
+  UPDATE_NOTES,
+  DELETED_NOTES,
+  ADD_NOTES_RELOAD
+} from '../actions';
 const initialState = {
   notes: [],
   name: 'Carlo'
@@ -7,11 +13,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SHOW_NOTES:
-      return {
-        ...state,
-        notes: action.payload
-      };
-    case ADD_NOTES:
       return {
         ...state,
         notes: action.payload
