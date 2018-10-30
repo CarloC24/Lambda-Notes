@@ -1,7 +1,8 @@
 .notes-functions {
   background: gray;
   height: 1040px;
-
+  position: absoulute;
+  overflow-y: hidden;
   h1 {
     font-family: 'Roboto';
     font-size: 40px;
@@ -27,5 +28,10 @@
     font-size: 25px;
     width: 70%;
     padding: 20px;
+  }
+
+  input {
+    width: 70%;
+    padding: 10px;
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteSingleNote } from '../../../actions';
+import '../../../CSS/index.scss';
 
 const Delete = props => {
   const deleteme = () => {
@@ -12,10 +13,18 @@ const Delete = props => {
     props.toggledelete();
   };
   return (
-    <div className="delete-modal">
-      <h1>Are you sure you want to delete??</h1>
-      <button onClick={() => deleteme()}>Yes</button>
-      <button onClick={() => donotdeleteme()}>No</button>
+    <div className="delete-modal-container">
+      <div className="delete-modal">
+        <h1 className="delete-heading">
+          Are you sure you want to delete this?
+        </h1>
+        <button onClick={() => deleteme()} className="yes">
+          Yes
+        </button>
+        <button onClick={() => donotdeleteme()} className="no">
+          No
+        </button>
+      </div>
     </div>
   );
 };

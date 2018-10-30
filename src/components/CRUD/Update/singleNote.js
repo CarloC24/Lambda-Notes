@@ -18,7 +18,14 @@ const singleNote = props => {
   };
 
   return (
-    <div>
+    <div className="modal">
+      {deleteBool ? (
+        <Delete
+          singleNote={props.singleNote}
+          history={props.history}
+          toggledelete={toggledelete}
+        />
+      ) : null}
       {editBool ? (
         <EditNote singleNote={props.singleNote} history={props.history} />
       ) : (
@@ -28,14 +35,6 @@ const singleNote = props => {
           toggledelete={toggledelete}
         />
       )}
-
-      {deleteBool ? (
-        <Delete
-          singleNote={props.singleNote}
-          history={props.history}
-          toggledelete={toggledelete}
-        />
-      ) : null}
     </div>
   );
 };
