@@ -5,7 +5,6 @@ export const ADD_NOTES = 'ADD_NOTES';
 export const SINGLE_NOTE = 'SINGLE_NOTE';
 export const UPDATE_NOTES = 'UPDATE_NOTES';
 export const DELETED_NOTES = 'DELETED_NOTES';
-export const ADD_NOTES_RELOAD = 'ADD_NOTES_RELOAD';
 
 export const show_notes = () => dispatch => {
   axios
@@ -43,11 +42,11 @@ export const updateSingleNote = (id, note) => dispatch => {
 export const deleteSingleNote = id => dispatch => {
   axios
     .delete(`https://fe-notes.herokuapp.com/note/delete/${id}`)
-    .then(res => alert(res))
-    .catch(err => alert(err));
-
-  axios
-    .get('https://fe-notes.herokuapp.com/note/get/all')
-    .then(res => dispatch({ type: ADD_NOTES, payload: res.data }))
+    .then(() => {
+      axios
+        .get('https://fe-notes.herokuapp.com/note/get/all')
+        .then(res => dispatch({ type: SHOW_NOTES, payload: res.data }))
+        .catch(err => alert(err));
+    })
     .catch(err => alert(err));
 };
