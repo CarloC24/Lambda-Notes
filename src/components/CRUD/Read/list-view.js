@@ -12,7 +12,7 @@ const listView = props => {
         {props.notes.map(item => {
           return (
             <div
-              className="notes"
+              className="notes draw meet"
               key={item._id}
               onClick={() => props.singleNote(item)}
             >

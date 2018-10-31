@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import '../../CSS/index.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -6,6 +6,7 @@ import { filtered_notes, clear_filtered_notes } from '../../actions';
 
 const Notes = props => {
   const [filteredNotes, setFilteredNotes] = useState([]);
+  const exportCSV = useRef(null);
   const filternotes = e => {
     const value = e.target.value;
     if (value.length > 0) {
@@ -18,20 +19,42 @@ const Notes = props => {
       props.clear_filtered_notes();
     }
   };
+  const exportFile = () => {
+    let csvRow = [];
+
+    let A = [];
+    props.notes.map(item => A.push(item));
+
+    A.forEach(item => {
+      csvRow.push(item);
+    });
+
+    let a = document.createElement('a');
+    a.href = `data:attachment/csv` + csvRow;
+    a.target = '_Blank';
+    a.download = 'testfile.csv';
+    document.body.appendChild(a);
+    a.click();
+  };
   return (
     <div className="notes-functions">
-      <h1>Lambda Notes</h1>
+      <h1 class="power">Lambda Notes</h1>
       <Link to="/">
         <div className="list-view">View Your Notes</div>
       </Link>
       <Link to="/new">
         <div className="add-notes">+ Create New Notes</div>
       </Link>
-      <input
-        type="text"
-        onChange={e => filternotes(e)}
-        placeholder="Search by title"
-      />
+
+      <span className="input">
+        <input type="text" onChange={e => filternotes(e)} />
+        <span />
+      </span>
+
+      <button ref={exportCSV} onClick={() => exportFile()}>
+        {' '}
+        Export to CSV
+      </button>
     </div>
   );
 };

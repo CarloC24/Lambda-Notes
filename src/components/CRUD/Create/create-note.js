@@ -26,6 +26,13 @@ const newNote = props => {
       alert('Cant have a empty field');
     }
   };
+
+  const handleTags = e => {
+    setNewNote({
+      ...newNotes,
+      tags: newNotes.tags.concat(e.target.value)
+    });
+  };
   return (
     <div className="new">
       <form className="new-form" onSubmit={e => update(e)}>
@@ -44,8 +51,21 @@ const newNote = props => {
           name="textBody"
           placeholder="create a new note"
         />
+
+        <select name="select" onChange={e => handleTags(e)}>
+          <option value="Green">Green</option>
+          <option value="Yellow">Yellow</option>
+          <option value="Red">Red</option>
+        </select>
+
+        <div>
+          {newNotes.tags.map((item, index) => {
+            return <h1 key={index}>{item}</h1>;
+          })}
+        </div>
+
         <button type="submit" onSubmit={e => update(e)}>
-          Add new note{' '}
+          Add new note
         </button>
       </form>
     </div>

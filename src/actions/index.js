@@ -3,8 +3,6 @@ import axios from 'axios';
 export const SHOW_NOTES = 'SHOW_NOTES';
 export const ADD_NOTES = 'ADD_NOTES';
 export const SINGLE_NOTE = 'SINGLE_NOTE';
-export const UPDATE_NOTES = 'UPDATE_NOTES';
-export const DELETED_NOTES = 'DELETED_NOTES';
 export const FILTERED_NOTES = 'FILTERED_NOTES';
 export const CLEAR_FILTERED_NOTES = 'CLEAR_FILTERED_NOTES';
 
@@ -37,7 +35,12 @@ export const singleNote = note => {
 export const updateSingleNote = (id, note) => dispatch => {
   axios
     .put(`https://fe-notes.herokuapp.com/note/edit/${id}`, note)
-    .then(res => dispatch({ type: UPDATE_NOTES, payload: res.data }))
+    .then(() => {
+      axios
+        .get('https://fe-notes.herokuapp.com/note/get/all')
+        .then(res => dispatch({ type: SHOW_NOTES, payload: res.data }))
+        .catch(err => alert(err));
+    })
     .catch(err => alert(err));
 };
 

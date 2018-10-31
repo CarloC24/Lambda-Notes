@@ -1,14 +1,13 @@
 import React from 'react';
+import '../CSS/index.scss';
 
 export default props => {
   return (
-    <div>
-      <form>
-        <h1>Welcome to lambda notes</h1>
-        <input type="text" />
-        <input type="text" />
-        <button onClick={() => props.toggle()}>Login</button>
-      </form>
+    <div className="login">
+      <h1 className="login-heading">Welcome to lambda notes</h1>
+      <button onClick={() => props.toggle()} className="login-button">
+        Login
+      </button>
     </div>
   );
 };

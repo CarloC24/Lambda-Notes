@@ -20,6 +20,7 @@ const App = theprops => {
   const toggleLogIn = () => {
     setLogIn(!logInBool);
   };
+  console.log(theprops);
   return (
     <div>
       {logInBool ? (
