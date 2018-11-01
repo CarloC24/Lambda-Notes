@@ -1,6 +1,7 @@
 $color3: #85cbd1;
 $color3a: #2e2536;
 $color4: #a188ed;
+$second: #644cad;
 
 .notes-functions {
   height: 1040px;
@@ -9,12 +10,19 @@ $color4: #a188ed;
   background: #282537;
   background-image: linear-gradient(#8b9da9, #fff6e4);
   box-shadow: inset 0 0 100px hsla(0, 0%, 0%, 0.3);
+  display: flex;
+  align-content: center;
+  flex-direction: column;
   h1 {
     color: #7fdbff;
     font-family: 'Permanent Marker', cursive;
     font-size: 40px;
     padding: 70px 0;
     font-weight: bold;
+    text-align: center;
+    span {
+      font-family: 'Roboto';
+    }
   }
 
   div {
@@ -59,19 +67,15 @@ $color4: #a188ed;
       #a1c4fd 100%
     );
   }
-  // input {
-  // width: 70%;
-  // padding: 10px;
-  // font-family: inherit;
-  // line-height: inherit;
-  // color: #2e3750;
-  // min-width: 12em;
-  // }
   .input {
-    position: relative; // bigger font size for demo purposes
+    position: relative;
+    // bigger font size for demo purposes
     font-size: 1.5em; // the border gradient // the width of the input border
-    padding: 3px; // we want inline fields by default
+    padding: 3px;
+    // we want inline fields by default
     display: inline-block;
+    width: 70%;
+    margin: 0 auto;
     // we want rounded corners no matter the size of the field
     border-radius: 9999em;
     *:not(span) {
@@ -111,7 +115,29 @@ $color4: #a188ed;
       line-height: inherit;
       color: #2e3750;
       min-width: 12em;
-      padding: 10px;
+      padding: 10px 45px;
     }
+  }
+  .button-3d {
+    position: relative;
+    width: 70%;
+    display: inline-block;
+    color: black;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: solid 1px #433c1f;
+    background: rgba(243, 226, 199, 1);
+    text-align: center;
+    padding: 16px 18px 14px;
+    margin: 20px auto;
+    transition: all 0.1s;
+    box-shadow: 0px 6px 0px #433c1f;
+  }
+  .button-3d:active {
+    box-shadow: 0px 2px 0px #433c1f;
+    position: relative;
+    top: 4px;
   }
 }

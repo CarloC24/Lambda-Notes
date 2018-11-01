@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import NotesMain from './components/NotesFunctions/Notes-Main';

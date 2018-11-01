@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import '../../CSS/index.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -6,7 +6,6 @@ import { filtered_notes, clear_filtered_notes } from '../../actions';
 
 const Notes = props => {
   const [filteredNotes, setFilteredNotes] = useState([]);
-  const exportCSV = useRef(null);
   const filternotes = e => {
     const value = e.target.value;
     if (value.length > 0) {
@@ -21,12 +20,13 @@ const Notes = props => {
   };
   const exportFile = () => {
     let csvRow = [];
-
+    let re = props.notes;
     let A = [];
-    props.notes.map(item => A.push(item));
+
+    re.map(item => A.push(item));
 
     A.forEach(item => {
-      csvRow.push(item);
+      csvRow.push(JSON.stringify(item));
     });
 
     let a = document.createElement('a');
@@ -38,7 +38,10 @@ const Notes = props => {
   };
   return (
     <div className="notes-functions">
-      <h1 class="power">Lambda Notes</h1>
+      <h1>
+        <span>λ</span>
+        ambda Notes
+      </h1>
       <Link to="/">
         <div className="list-view">View Your Notes</div>
       </Link>
@@ -51,7 +54,7 @@ const Notes = props => {
         <span />
       </span>
 
-      <button ref={exportCSV} onClick={() => exportFile()}>
+      <button onClick={() => exportFile()} className="button-3d">
         {' '}
         Export to CSV
       </button>
