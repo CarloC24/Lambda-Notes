@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import '../../../CSS/index.scss';
 import { Link } from 'react-router-dom';
 import { singleNote } from '../../../actions';
+import { TweenMax } from 'gsap/all';
 
 const listView = props => {
+  const array = [];
+
+  useEffect(
+    () => {
+      TweenMax.staggerFrom(array, 0.2, { y: 1000, opacity: 0 }, 0.2);
+    },
+    [props.name]
+  );
+  console.log(array);
   return (
     <div className="list-container">
       <h1 className="list-heading">A cool note taking app by {props.name}</h1>
       <div className="list-notes">
-        {props.notes.map(item => {
+        {props.notes.map((item, index) => {
           return (
             <div
+              ref={div => (array[index] = div)}
               className="notes draw meet"
               key={item._id}
               onClick={() => props.singleNote(item)}
