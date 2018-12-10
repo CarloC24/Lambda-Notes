@@ -5,7 +5,7 @@ import '../../../CSS/index.scss';
 
 const Delete = props => {
   const deleteme = () => {
-    props.deleteSingleNote(props.singleNote._id);
+    props.deleteSingleNote(props.singleNote.id);
     props.history.push('/');
   };
 

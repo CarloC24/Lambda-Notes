@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import '../../../CSS/index.scss';
 import Note from './note';
@@ -8,6 +8,8 @@ import Delete from './Delete';
 const singleNote = props => {
   const [editBool, setEditBool] = useState(false);
   const [deleteBool, setDelBool] = useState(false);
+
+  useEffect(() => {});
 
   const edit = () => {
     setEditBool(!editBool);

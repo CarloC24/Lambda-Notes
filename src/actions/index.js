@@ -8,36 +8,37 @@ export const CLEAR_FILTERED_NOTES = 'CLEAR_FILTERED_NOTES';
 
 export const show_notes = () => dispatch => {
   axios
-    .get('https://fe-notes.herokuapp.com/note/get/all')
+    .get('http://localhost:9000/notes')
     .then(res => dispatch({ type: SHOW_NOTES, payload: res.data }))
     .catch(err => alert(err));
 };
 
 export const add_notes = item => dispatch => {
   axios
-    .post('https://fe-notes.herokuapp.com/note/create', item)
+    .post('http://localhost:9000/notes', item)
     .then(() => {
       axios
-        .get('https://fe-notes.herokuapp.com/note/get/all')
+        .get('http://localhost:9000/notes')
         .then(res => dispatch({ type: SHOW_NOTES, payload: res.data }))
         .catch(err => console.log(err));
     })
     .catch(err => console.log(err));
 };
 
-export const singleNote = note => {
-  return {
-    type: SINGLE_NOTE,
-    payload: note
-  };
+export const singleNote = id => dispatch => {
+  axios
+    .get(`http://localhost:9000/notes/${id}`)
+    .then(res => dispatch({ type: SINGLE_NOTE, payload: res.data }))
+    .catch(err => alert(err));
 };
 
 export const updateSingleNote = (id, note) => dispatch => {
+  console.log(id, note);
   axios
-    .put(`https://fe-notes.herokuapp.com/note/edit/${id}`, note)
+    .put(`http://localhost:9000/notes/${id}`, note)
     .then(() => {
       axios
-        .get('https://fe-notes.herokuapp.com/note/get/all')
+        .get('http://localhost:9000/notes')
         .then(res => dispatch({ type: SHOW_NOTES, payload: res.data }))
         .catch(err => alert(err));
     })
@@ -46,10 +47,10 @@ export const updateSingleNote = (id, note) => dispatch => {
 
 export const deleteSingleNote = id => dispatch => {
   axios
-    .delete(`https://fe-notes.herokuapp.com/note/delete/${id}`)
+    .delete(`http://localhost:9000/notes/${id}`)
     .then(() => {
       axios
-        .get('https://fe-notes.herokuapp.com/note/get/all')
+        .get('http://localhost:9000/notes')
         .then(res => dispatch({ type: SHOW_NOTES, payload: res.data }))
         .catch(err => alert(err));
     })

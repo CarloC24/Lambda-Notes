@@ -14,7 +14,7 @@ const listView = props => {
     },
     [props.name]
   );
-  console.log(array);
+  console.log(props);
   return (
     <div className="list-container">
       <h1 className="list-heading">A cool note taking app by {props.name}</h1>
@@ -24,10 +24,10 @@ const listView = props => {
             <div
               ref={div => (array[index] = div)}
               className="notes draw meet"
-              key={item._id}
-              onClick={() => props.singleNote(item)}
+              key={item.id}
+              onClick={() => props.singleNote(item.id)}
             >
-              <Link to={`/${item._id}`}>
+              <Link to={`/${item.id}`}>
                 <h1 className="notes-heading">{item.title}</h1>
                 <p className="notes-paragraph"> {item.textBody}</p>
               </Link>
@@ -45,7 +45,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    singleNote: note => dispatch(singleNote(note))
+    singleNote: id => dispatch(singleNote(id))
   };
 };
 

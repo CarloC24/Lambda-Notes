@@ -8,7 +8,7 @@ const editNote = props => {
     title: props.singleNote.title,
     tags: props.singleNote.tags,
     textBody: props.singleNote.textBody,
-    id: props.singleNote._id
+    id: props.singleNote.id
   });
 
   const handleChange = e => {
