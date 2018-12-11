@@ -40,7 +40,6 @@ const Todos = props => {
   function handleDelete(id) {
     props.delete_todos(singleTodo.notes_id, id);
   }
-  console.log(singleTodo);
   return (
     <div>
       <h1>Your todo's</h1>

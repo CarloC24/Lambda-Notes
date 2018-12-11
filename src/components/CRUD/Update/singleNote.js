@@ -4,14 +4,14 @@ import '../../../CSS/index.scss';
 import Note from './note';
 import EditNote from './UpdateForm';
 import Delete from './Delete';
-import { get_todos, get_tags } from '../../../actions';
+import { get_todos, get_tags, delete_tags } from '../../../actions';
 
 const singleNote = props => {
   const [editBool, setEditBool] = useState(false);
   const [deleteBool, setDelBool] = useState(false);
   useEffect(
     () => {
-      props.get_tags(props.singleNote.tags);
+      props.get_tags(props.singleNote.id);
       props.get_todos(props.singleNote.id);
     },
     [props]
@@ -25,11 +25,20 @@ const singleNote = props => {
     setDelBool(!deleteBool);
   };
 
+  const deleteTag = id => {
+    console.log('reached me');
+    props.delete_tags(id, props.singleNoteId);
+  };
+
   return (
     <div className="modal">
-      {props.singleNote.tags
-        ? props.singleNote.tags.map(item => {
-            return <h1 key={item.id}>{item.tags}</h1>;
+      {props.tags
+        ? props.tags.map(item => {
+            return (
+              <div onClick={() => deleteTag(item.id)}>
+                <h1 key={item.id}>{item.tags}</h1>
+              </div>
+            );
           })
         : null}
       {deleteBool ? (
@@ -56,14 +65,16 @@ const singleNote = props => {
 
 const mapStateToProps = state => {
   return {
-    singleNote: state.singleNoteReducer.singleNote
+    singleNote: state.singleNoteReducer.singleNote,
+    tags: state.singleNoteReducer.tags
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     get_tags: tags => dispatch(get_tags(tags)),
-    get_todos: id => dispatch(get_todos(id))
+    get_todos: id => dispatch(get_todos(id)),
+    delete_tags: (id, singleNoteId) => dispatch(delete_tags(id, singleNoteId))
   };
 };
 

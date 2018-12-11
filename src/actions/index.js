@@ -108,15 +108,34 @@ export const delete_todos = (singleNoteId, id) => dispatch => {
     });
 };
 //TAGS
-export const get_tags = tags => {
-  return {
-    type: GET_TAGS,
-    payload: tags
-  };
+export const get_tags = id => dispatch => {
+  axios
+    .get(`http://localhost:9000/tags/${id}`)
+    .then(resp => dispatch({ type: GET_TAGS, payload: resp.data }))
+    .catch(err => alert(err));
 };
 
-export const add_tags = tags => dispatch => {
-  axios.post(`http://localhost:9000/tags`).then(() => {
-    axios.get();
-  });
+export const add_tags = (tags, id) => dispatch => {
+  axios
+    .post(`http://localhost:9000/tags`, tags)
+    .then(() => {
+      axios
+        .get(`http://localhost:9000/tags/${id}`)
+        .then(resp => dispatch({ type: GET_TAGS, payload: resp.data }))
+        .catch(err => alert(err));
+    })
+    .catch(err => alert(err));
+};
+
+export const delete_tags = (id, singleNoteId) => dispatch => {
+  console.log('here');
+  axios
+    .delete(`http://localhost:9000/tags/${id}`)
+    .then(() => {
+      axios
+        .get(`http://localhost:9000/tags/${singleNoteId}`)
+        .then(resp => dispatch({ type: GET_TAGS, payload: resp.data }))
+        .catch(err => alert(err));
+    })
+    .catch(err => alert(err));
 };
