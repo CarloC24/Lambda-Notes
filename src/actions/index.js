@@ -69,3 +69,5 @@ export const clear_filtered_notes = () => {
     type: CLEAR_FILTERED_NOTES
   };
 };
+
+// TAGS

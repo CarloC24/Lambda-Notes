@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import '../../../CSS/index.scss';
 import Note from './note';
@@ -21,6 +21,7 @@ const singleNote = props => {
 
   return (
     <div className="modal">
+      {props.singleNote.tags ? <h1>True</h1> : <h1>False</h1>}
       {deleteBool ? (
         <Delete
           singleNote={props.singleNote}
@@ -31,11 +32,13 @@ const singleNote = props => {
       {editBool ? (
         <EditNote singleNote={props.singleNote} history={props.history} />
       ) : (
-        <Note
-          singleNote={props.singleNote}
-          edit={edit}
-          toggledelete={toggledelete}
-        />
+        <Fragment>
+          <Note
+            singleNote={props.singleNote}
+            edit={edit}
+            toggledelete={toggledelete}
+          />
+        </Fragment>
       )}
     </div>
   );
