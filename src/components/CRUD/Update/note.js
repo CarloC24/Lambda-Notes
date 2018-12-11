@@ -2,7 +2,6 @@ import React from 'react';
 import Todos from '../Read/todos';
 
 export default props => {
-  console.log(props.singleNote);
   return (
     <div>
       <div className="single-note">
@@ -16,7 +15,7 @@ export default props => {
         </div>
         <h1 className="single-note-heading">{props.singleNote.title}</h1>
         <h1 className="single-note-body">{props.singleNote.textBody}</h1>
-        <Todos id={props.singleNote.id} />
+        <Todos singleId={props.singleNote.id} />
       </div>
     </div>
   );

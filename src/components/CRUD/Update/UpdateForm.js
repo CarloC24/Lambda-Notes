@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../../CSS/index.scss';
 import { connect } from 'react-redux';
-import { updateSingleNote } from '../../../actions';
+import { updateSingleNote, get_todos } from '../../../actions';
 
 const editNote = props => {
   const [editedNote, setEditedNote] = useState({
@@ -49,7 +49,8 @@ const editNote = props => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    updateSingleNote: (id, note) => dispatch(updateSingleNote(id, note))
+    updateSingleNote: (id, note) => dispatch(updateSingleNote(id, note)),
+    get_todos: todos => dispatch(get_todos(todos))
   };
 };
 

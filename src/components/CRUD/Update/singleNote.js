@@ -4,12 +4,18 @@ import '../../../CSS/index.scss';
 import Note from './note';
 import EditNote from './UpdateForm';
 import Delete from './Delete';
+import { get_todos, get_tags } from '../../../actions';
 
 const singleNote = props => {
   const [editBool, setEditBool] = useState(false);
   const [deleteBool, setDelBool] = useState(false);
-
-  useEffect(() => {});
+  useEffect(
+    () => {
+      props.get_tags(props.singleNote.tags);
+      props.get_todos(props.singleNote.id);
+    },
+    [props]
+  );
 
   const edit = () => {
     setEditBool(!editBool);
@@ -21,7 +27,11 @@ const singleNote = props => {
 
   return (
     <div className="modal">
-      {props.singleNote.tags ? <h1>True</h1> : <h1>False</h1>}
+      {props.singleNote.tags
+        ? props.singleNote.tags.map(item => {
+            return <h1 key={item.id}>{item.tags}</h1>;
+          })
+        : null}
       {deleteBool ? (
         <Delete
           singleNote={props.singleNote}
@@ -50,7 +60,14 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    get_tags: tags => dispatch(get_tags(tags)),
+    get_todos: id => dispatch(get_todos(id))
+  };
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(singleNote);

@@ -14,7 +14,6 @@ const listView = props => {
     },
     [props.name]
   );
-  console.log(props);
   return (
     <div className="list-container">
       <h1 className="list-heading">A cool note taking app by {props.name}</h1>

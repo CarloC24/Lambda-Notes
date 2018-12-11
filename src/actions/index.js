@@ -5,6 +5,8 @@ export const ADD_NOTES = 'ADD_NOTES';
 export const SINGLE_NOTE = 'SINGLE_NOTE';
 export const FILTERED_NOTES = 'FILTERED_NOTES';
 export const CLEAR_FILTERED_NOTES = 'CLEAR_FILTERED_NOTES';
+export const GET_TODOS = 'GET_TODOS';
+export const GET_TAGS = 'GET_TAGS';
 
 export const show_notes = () => dispatch => {
   axios
@@ -70,4 +72,51 @@ export const clear_filtered_notes = () => {
   };
 };
 
-// TAGS
+// TODOS
+export const get_todos = id => dispatch => {
+  axios
+    .get(`http://localhost:9000/todos/notes/${id}`)
+    .then(resp => dispatch({ type: GET_TODOS, payload: resp.data }))
+    .catch(err => alert(err));
+};
+
+export const add_todos = (singleNoteId, todos) => dispatch => {
+  axios
+    .post('http://localhost:9000/todos', todos)
+    .then(() => {
+      axios
+        .get(`http://localhost:9000/todos/notes/${singleNoteId}`)
+        .then(resp => dispatch({ type: GET_TODOS, payload: resp.data }))
+        .catch(err => alert(err));
+    })
+    .catch(err => {
+      alert(err);
+    });
+};
+
+export const delete_todos = (singleNoteId, id) => dispatch => {
+  axios
+    .delete(`http://localhost:9000/todos/${id}`)
+    .then(() => {
+      axios
+        .get(`http://localhost:9000/todos/notes/${singleNoteId}`)
+        .then(resp => dispatch({ type: GET_TODOS, payload: resp.data }))
+        .catch(err => alert(err));
+    })
+    .catch(err => {
+      alert(err);
+    });
+};
+//TAGS
+export const get_tags = tags => {
+  return {
+    type: GET_TAGS,
+    payload: tags
+  };
+};
+
+export const add_tags = tags => dispatch => {
+  axios.post(`http://localhost:9000/tags`).then(() => {
+    axios.get();
+  });
+};
