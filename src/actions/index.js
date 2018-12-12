@@ -128,7 +128,7 @@ export const add_tags = (tags, id) => dispatch => {
 };
 
 export const delete_tags = (id, singleNoteId) => dispatch => {
-  console.log('here');
+  console.log(id,singleNoteId);
   axios
     .delete(`http://localhost:9000/tags/${id}`)
     .then(() => {

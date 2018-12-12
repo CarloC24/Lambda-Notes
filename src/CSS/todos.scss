@@ -1,0 +1,107 @@
+.todos-container {
+  transition: all 0.2s cubic-bezier(0.63, 1.75, 0.22, 0.57);
+  margin: 20px 0px;
+  padding-left: 10px;
+  .todos-header {
+    margin: 10px 0;
+    font-size: 50px;
+    color: solid grey;
+    font-family: 'Permanent Marker', cursive;
+  }
+  .todos {
+    font-family: 'Fira Sans', sans-serif;
+    display: flex;
+    margin: 30px 20px;
+    .todos-task {
+      font-size: 20px;
+      list-style-type: disc;
+    }
+    .todos-button {
+      margin-left: 30px;
+      margin-top: -10px;
+      border: 2px solid #cdcdcd;
+      padding: 10px;
+      border-radius: 3px;
+      font-weight: 400;
+      color: black;
+      background-color: white;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.63, 1.75, 0.22, 0.57);
+      overflow: hidden;
+
+      &:hover {
+        border: 2px solid #e03e28;
+        color: #e03e28;
+      }
+    }
+  }
+  form {
+    .input {
+      position: relative;
+      // bigger font size for demo purposes
+      font-size: 1.5em; // the border gradient // the width of the input border
+      // we want inline fields by default
+      display: inline-block;
+      width: 30%;
+      margin: 0 auto;
+      // we want rounded corners no matter the size of the field
+      border-radius: 9999em;
+      *:not(span) {
+        position: relative;
+        display: inherit;
+        border-radius: inherit;
+        margin: 0;
+        border: none;
+        outline: none;
+        padding: 0 0.325em;
+        z-index: 1; // needs to be above the :focus span // summon fancy shadow styles when focussed
+        &:focus + span {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      span {
+        transform: scale(0.993, 0.94); // scale it down just a little bit
+        transition: transform 0.5s, opacity 0.25s;
+        opacity: 0;
+        // is hidden by default
+        position: absolute;
+        z-index: 0; // needs to be below the field (would block input otherwise)
+        margin: 4px; // a bit bigger than .input padding, this prevents background color pixels shining through
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        pointer-events: none; // this allows the user to click through this element, as the shadow is rather wide it might overlap with other fields and we don't want to block those.
+        // fancy shadow styles
+        box-shadow: inset 0 0 0 3px #fff, 0 0 0 4px #fff, 3px -3px 30px #1beabd,
+          -3px 3px 30px #10abff;
+      }
+      input {
+        font-family: 'Roboto';
+        line-height: inherit;
+        color: #2e3750;
+        min-width: 12em;
+        padding: 10px 45px;
+      }
+    }
+    .todos-add-button {
+      margin-left: 30px;
+      margin-top: -10px;
+      border: 2px solid #cdcdcd;
+      padding: 10px;
+      border-radius: 3px;
+      font-weight: 400;
+      color: black;
+      background-color: white;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.63, 1.75, 0.22, 0.57);
+      overflow: hidden;
+      &:hover {
+        border: 2px solid green;
+        color: green;
+      }
+    }
+  }
+}

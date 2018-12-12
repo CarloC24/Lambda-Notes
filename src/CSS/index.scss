@@ -1,6 +1,7 @@
 @import 'reset.scss';
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 @import 'login.scss';
 @import 'App.scss';
 @import 'NotesMain.scss';
@@ -9,3 +10,6 @@
 @import 'singleNote.scss';
 @import 'updateForm.scss';
 @import 'delete.scss';
+@import 'todos.scss';
+@import 'tags.scss';
+@import 'single-modal.scss';

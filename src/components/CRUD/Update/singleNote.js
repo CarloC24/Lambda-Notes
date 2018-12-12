@@ -26,21 +26,24 @@ const singleNote = props => {
   };
 
   const deleteTag = id => {
-    console.log('reached me');
-    props.delete_tags(id, props.singleNoteId);
+    props.delete_tags(id, props.singleNote.id);
   };
 
   return (
     <div className="modal">
-      {props.tags
-        ? props.tags.map(item => {
-            return (
-              <div onClick={() => deleteTag(item.id)}>
-                <h1 key={item.id}>{item.tags}</h1>
-              </div>
-            );
-          })
-        : null}
+      <div className="tags-icons">
+        {props.tags
+          ? props.tags.map((item, index) => {
+              return (
+                <div
+                  className={item.tags}
+                  onClick={() => deleteTag(item.id)}
+                  key={index}
+                />
+              );
+            })
+          : null}
+      </div>
       {deleteBool ? (
         <Delete
           singleNote={props.singleNote}

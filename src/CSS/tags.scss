@@ -1,0 +1,45 @@
+.tags-container {
+  select {
+    border-bottom: 1px solid #c9c9c9;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    color: #444444;
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-color: white;
+    background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/221782-200.png');
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 20px;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 150px;
+    option {
+      position: relative;
+    }
+  }
+  button {
+    margin-left: 30px;
+    margin-top: -10px;
+    border: 2px solid #cdcdcd;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: 400;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.63, 1.75, 0.22, 0.57);
+    overflow: hidden;
+    &:hover {
+      border: 2px solid grey;
+      color: black;
+    }
+  }
+}

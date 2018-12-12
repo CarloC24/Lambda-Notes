@@ -11,7 +11,7 @@ import Login from './components/login';
 import singleNote from './components/CRUD/Update/singleNote';
 
 const App = theprops => {
-  const [logInBool, setLogIn] = useState(true);
+  const [logInBool, setLogIn] = useState(false);
   useEffect(() => {
     theprops.show_notes();
   }, []);

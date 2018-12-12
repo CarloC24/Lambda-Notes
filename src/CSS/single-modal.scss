@@ -1,0 +1,22 @@
+.tags-icons {
+  margin-top: 20px;
+  display: flex;
+  .Completed {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+  }
+  .Deprecated {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+  }
+  .In-Progress {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+  }
+}

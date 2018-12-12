@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { add_todos, delete_todos, get_todos } from '../../../actions';
+import '../../../CSS/index.scss';
 
 const Todos = props => {
   const [singleTodo, handleSingleTodo] = useState({
@@ -41,28 +42,40 @@ const Todos = props => {
     props.delete_todos(singleTodo.notes_id, id);
   }
   return (
-    <div>
-      <h1>Your todo's</h1>
-      {props.todos ? (
-        props.todos.map((item, index) => {
-          return (
-            <div key={index}>
-              <h1>{item.task}</h1>
-              <button onClick={() => handleDelete(item.id)}>DELETE</button>
-            </div>
-          );
-        })
-      ) : (
-        <h1>false</h1>
-      )}
+    <div className="todos-container">
+      <h1 className="todos-header">Your todo's</h1>
+      <ul>
+        {props.todos ? (
+          props.todos.map((item, index) => {
+            return (
+              <div className="todos" key={index}>
+                <li className="todos-task">{item.task}</li>
+                <button
+                  onClick={() => handleDelete(item.id)}
+                  className="todos-button"
+                >
+                  DELETE
+                </button>
+              </div>
+            );
+          })
+        ) : (
+          <h1>false</h1>
+        )}
+      </ul>
       <form onSubmit={e => submit(e)}>
-        <input
-          onChange={e => change(e)}
-          placeholder="add todos"
-          value={singleTodo.todo}
-          name="task"
-        />
-        <button type="submit">ADD TODO</button>
+        <span className="input">
+          <input
+            onChange={e => change(e)}
+            placeholder="add todos"
+            value={singleTodo.todo}
+            name="task"
+          />
+          <span />
+        </span>
+        <button type="submit" className="todos-add-button">
+          ADD TODO
+        </button>
       </form>
     </div>
   );

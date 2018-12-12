@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { add_tags } from '../../../actions';
+import '../../../CSS/index.scss';
 
 const tags = props => {
   const [tags, setTags] = useState({
@@ -31,10 +32,10 @@ const tags = props => {
   }
 
   return (
-    <div>
+    <div className="tags-container">
       <select onChange={e => handleChange(e)}>
         <option value="Completed">Completed</option>
-        <option value="In Progress">In Progress</option>
+        <option value="In-Progress">In-Progress</option>
         <option value="Deprecated">Deprecated</option>
         <option defaultValue />
       </select>
