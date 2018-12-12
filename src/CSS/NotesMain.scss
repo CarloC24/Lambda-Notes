@@ -40,6 +40,16 @@ $second: #644cad;
   div:hover {
     background-position: right center;
   }
+  .picture {
+    height: 50px;
+    width: 50px;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    background-size: 100%;
+  }
 
   .list-view {
     color: white;

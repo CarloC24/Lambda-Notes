@@ -39,7 +39,7 @@ const listView = props => {
 };
 
 const mapStateToProps = state => ({
-  name: state.notesReducer.name
+  name: state.singleUser.name
 });
 
 const mapDispatchToProps = dispatch => {

@@ -9,8 +9,8 @@ const Notes = props => {
   const filternotes = e => {
     const value = e.target.value;
     if (value.length > 0) {
-      const filterednotes = props.notes.filter(
-        item => (item.title.includes(value) ? item : null)
+      const filterednotes = props.notes.filter(item =>
+        item.title.includes(value) ? item : null
       );
       setFilteredNotes(filterednotes);
       props.filtered_notes(filteredNotes);
@@ -42,6 +42,10 @@ const Notes = props => {
         <span>λ</span>
         ambda Notes
       </h1>
+      <div
+        className="picture"
+        style={{ backgroundImage: `url('${props.picture}')` }}
+      />
       <Link to="/">
         <div className="list-view">View Your Notes</div>
       </Link>
@@ -63,7 +67,8 @@ const Notes = props => {
 };
 const mapStateToProps = state => {
   return {
-    notes: state.notesReducer.notes
+    notes: state.notesReducer.notes,
+    picture: state.singleUser.picture
   };
 };
 

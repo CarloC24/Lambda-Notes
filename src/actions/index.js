@@ -7,6 +7,7 @@ export const FILTERED_NOTES = 'FILTERED_NOTES';
 export const CLEAR_FILTERED_NOTES = 'CLEAR_FILTERED_NOTES';
 export const GET_TODOS = 'GET_TODOS';
 export const GET_TAGS = 'GET_TAGS';
+export const NAME_PICTURE = 'NAME_PICTURE';
 
 export const show_notes = () => dispatch => {
   axios
@@ -128,7 +129,7 @@ export const add_tags = (tags, id) => dispatch => {
 };
 
 export const delete_tags = (id, singleNoteId) => dispatch => {
-  console.log(id,singleNoteId);
+  console.log(id, singleNoteId);
   axios
     .delete(`http://localhost:9000/tags/${id}`)
     .then(() => {
@@ -138,4 +139,15 @@ export const delete_tags = (id, singleNoteId) => dispatch => {
         .catch(err => alert(err));
     })
     .catch(err => alert(err));
+};
+
+export const get_name_picture = (name, picture) => {
+  const obj = {
+    name,
+    picture
+  };
+  return {
+    type: NAME_PICTURE,
+    payload: obj
+  };
 };
