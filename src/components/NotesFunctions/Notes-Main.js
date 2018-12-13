@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../CSS/index.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { filtered_notes, clear_filtered_notes } from '../../actions';
 
 const Notes = props => {
@@ -19,18 +20,19 @@ const Notes = props => {
     }
   };
   const exportFile = () => {
-    let csvRow = [];
-    let re = props.notes;
-    let A = [];
+    let csvFile = [];
+    let notes = props.notes;
 
-    re.map(item => A.push(item));
-
-    A.forEach(item => {
-      csvRow.push(JSON.stringify(item));
+    notes.map(item => {
+      let row = [];
+      row.push(JSON.stringify(item.title));
+      row.push(JSON.stringify(item.textBody));
+      row.push(JSON.stringify(item.created_by));
+      return csvFile.push(row);
     });
 
     let a = document.createElement('a');
-    a.href = `data:attachment/csv` + csvRow;
+    a.href = `data:attachment/csv` + csvFile;
     a.target = '_Blank';
     a.download = 'testfile.csv';
     document.body.appendChild(a);

@@ -7,7 +7,8 @@ const newNote = props => {
   const [newNotes, setNewNote] = useState({
     title: '',
     textBody: '',
-    tags: []
+    tags: [],
+    created_by: props.name
   });
 
   const handleChange = e => {
@@ -60,7 +61,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    name: state.singleUser.name
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(newNote);

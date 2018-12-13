@@ -16,7 +16,7 @@ const listView = props => {
   );
   return (
     <div className="list-container">
-      <h1 className="list-heading">A cool note taking app by {props.name}</h1>
+      <h1 className="list-heading">Hey {props.name} welcome to lambda notes</h1>
       <div className="list-notes">
         {props.notes.map((item, index) => {
           return (

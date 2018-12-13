@@ -1,22 +1,24 @@
 .tags-icons {
   margin-top: 20px;
   display: flex;
+  font-family: 'Roboto';
+  font-weight: 10px;
   .Completed {
-    border-radius: 100%;
-    width: 20px;
-    height: 20px;
-    background-color: green;
+    background: linear-gradient(to top left, #66ff66 0%, #ccffff 100%);
+    margin: 10px;
+    padding: 10px;
+    padding-left: 20px;
   }
   .Deprecated {
-    border-radius: 100%;
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    background: linear-gradient(to left, #cc0000 0%, #ff3300 55%);
+    margin: 10px;
+    padding: 10px;
+    padding-left: 20px;
   }
   .In-Progress {
-    border-radius: 100%;
-    width: 20px;
-    height: 20px;
-    background-color: yellow;
+    background: linear-gradient(to left, #ffff66 0%, #99ff33 80%);
+    margin: 10px;
+    padding: 10px;
+    padding-left: 20px;
   }
 }

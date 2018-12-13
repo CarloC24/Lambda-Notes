@@ -16,6 +16,9 @@ export default props => {
         </div>
         <h1 className="single-note-heading">{props.singleNote.title}</h1>
         <h1 className="single-note-body">{props.singleNote.textBody}</h1>
+        <h1 className="single-note-author">
+          Created By : {props.singleNote.created_by}
+        </h1>
         <Todos singleId={props.singleNote.id} />
         <Tags singleId={props.singleNote.id} />
       </div>

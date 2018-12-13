@@ -39,7 +39,9 @@ const singleNote = props => {
                   className={item.tags}
                   onClick={() => deleteTag(item.id)}
                   key={index}
-                />
+                >
+                  <h1>{item.tags}</h1>
+                </div>
               );
             })
           : null}

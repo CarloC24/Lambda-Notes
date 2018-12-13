@@ -8,7 +8,8 @@ const editNote = props => {
     title: props.singleNote.title,
     tags: props.singleNote.tags,
     textBody: props.singleNote.textBody,
-    id: props.singleNote.id
+    id: props.singleNote.id,
+    created_by: props.name
   });
 
   const handleChange = e => {
@@ -47,6 +48,13 @@ const editNote = props => {
     </div>
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    name: state.singleUser.name
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     updateSingleNote: (id, note) => dispatch(updateSingleNote(id, note)),
@@ -55,6 +63,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(editNote);
